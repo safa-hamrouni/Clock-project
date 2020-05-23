@@ -1,15 +1,14 @@
 
 function clock() { 
-	var i = 0;
+	var i = 1;
 	var current = new Date();
 	var clockSelector = $('.clock');
-
 	return {
 		
 		hours: function(){
 			//set live hours
 			var hour = 	current.getHours();
-			if (hour > 12) { return hour = hour - 12 } else  return hour;
+			if (hour > 12) { return hour = hour - 12 } return hour;
 
 		},
 		minutes: function(){
@@ -32,24 +31,12 @@ function clock() {
 			} return meridian
 		},
 		display: function(){
-			//display the time 
-			//console.log(current.getHours())
-			return clockSelector.text(this.hours() + ":" + this.minutes() + ":" + this.seconds() + " " + this.meridian())	
+			return clockSelector.text(this.hours() + ":" + this.minutes() + ":" + this.seconds() + " " + this.meridian())
+
 		},
 		increment: function(){
-			setInterval(function (){return clock().display()} , 1000)}
-			//increments seconds, minutes and hours
-			// i++
-			// if (second === 59){
-			// 	minute ++
-			// 	second = 0
-			// }
-			// if (minute === 59){
-			// 	hour ++ 
-			// 	minute = 0
-			// }
-			//var that = this;
-			
+			setInterval(function (){return clock().display()} , 1000)
+		}			
 		
 		// morningAlarm: function(){
 		// 	//will ask you if you slept well and change background image (maybe have a link to news and weather today)
@@ -59,6 +46,7 @@ function clock() {
 }
 
 var timer = clock()
+timer.display()
 timer.increment()
 //setInterval(function(){ return clock().display()},1000)
 

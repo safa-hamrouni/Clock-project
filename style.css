@@ -1,1 +1,30 @@
-# clock project
+#container {
+	width: 60%;
+	height:auto;
+	margin-top:15%;
+	margin-left:20%;
+	padding:25px;
+	background: #01A67E;
+}
+
+#clock-container {
+	display:table;
+	width: 286px;
+	height: 105px;
+	margin:auto;
+	background: #B2B605;
+	text-align: center;
+}
+h1{
+	text-align: center;
+	font-size: 45px;
+	font-style: italic;
+}
+span {
+	display: table-cell;
+	vertical-align: middle;
+	font-size: 25px;
+	font-weight: bolder;
+	color:yellow;
+	text-shadow: 2px 5px 5px black;
+}
