@@ -2,32 +2,42 @@
 function clock() { 
 	var i = 0;
 	var current = new Date();
-	var hour = 	current.getHours()
-	var minute = current.getMinutes()
-	var second = current.getSeconds()
+	var clockSelector = $('.clock');
 
 	return {
+		
 		hours: function(){
 			//set live hours
-			current.getHours()
+			var hour = 	current.getHours();
+			if (hour > 12) { return hour = hour - 12 } else  return hour;
+
 		},
 		minutes: function(){
 			//set live minutes
-			current.getMinutes()
+			var minute = current.getMinutes()
+			if (minute < 10) {return minute = "0" + minute} return minute
+
 		},
 		seconds: function(){
 			//set live seconds
-			current.getSeconds()
+			var second = current.getSeconds()
+			if (second < 10) {return second = "0" + second} return second
+			
+		},
+		meridian : function (){
+			var meridian = "AM";
+			var hour = 	current.getHours()
+			if (hour >= 12){
+				return meridian = "PM"
+			} return meridian
 		},
 		display: function(){
 			//display the time 
-			console.log(current.getHours())
-			$('.hours').text(hour)
-			$('.minutes').text(minute)
-			$('.seconds').text(second)
-			
+			//console.log(current.getHours())
+			return clockSelector.text(this.hours() + ":" + this.minutes() + ":" + this.seconds() + " " + this.meridian())	
 		},
 		increment: function(){
+			setInterval(function (){return clock().display()} , 1000)}
 			//increments seconds, minutes and hours
 			// i++
 			// if (second === 59){
@@ -38,18 +48,18 @@ function clock() {
 			// 	hour ++ 
 			// 	minute = 0
 			// }
-			setInterval(seconds, 1000)
-		},
-		morningAlarm: function(){
-			//will ask you if you slept well and change background image (maybe have a link to news and weather today)
-
-		}
+			//var that = this;
+			
+		
+		// morningAlarm: function(){
+		// 	//will ask you if you slept well and change background image (maybe have a link to news and weather today)
+		// }
 
 	};
 }
 
-var time = clock()
-time.display()
-time.increment()
+var timer = clock()
+timer.increment()
+//setInterval(function(){ return clock().display()},1000)
 
 
